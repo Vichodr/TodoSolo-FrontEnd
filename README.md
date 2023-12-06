@@ -1,6 +1,8 @@
 # TodoSolo
 
-This template should help get you started developing with Vue 3 in Vite.
+FrontEnd de mi proyecto TodoSolo
+Autor: Vicente Marquez
+Universidad de la Frontera
 
 ## Recommended IDE Setup
 
