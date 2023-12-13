@@ -1,8 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
+import DeleteProduct from '../views/DeleteProduct.vue'
 import AddProduct from '../views/AddProduct.vue'
 import EditProduct from '../views/EditProduct.vue'
 import Login from '../views/Login.vue'
+import listProducts from '../views/listProducts.vue'
 import ProductDetail from '../views/ProductDetail.vue'
 import Signup from '../views/Signup.vue'
 import WishList from '../views/WishList.vue'
@@ -19,6 +21,16 @@ const router = createRouter({
       path: '/addProduct',
       name: 'addProduct',
       component: AddProduct
+    },
+    {
+      path: '/listProducts',
+      name: 'listProducts',
+      component: listProducts
+    },
+    {
+      path: '/deleteProduct',
+      name: 'deleteProduct',
+      component: DeleteProduct
     },
     {
       path: '/editProduct',
@@ -44,6 +56,12 @@ const router = createRouter({
       path: '/wishList',
       name: 'wishList',
       component: WishList
+    },
+    {
+      path: "/product/:id",
+      name: "ProductDetail",
+      component: ProductDetail,
+      props: true,
     }
   ]
 })

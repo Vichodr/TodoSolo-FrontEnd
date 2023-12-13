@@ -5,15 +5,15 @@
       <router-link to="/"><span class="logo-text">TODO<span class="orange-text">SOLO</span></span></router-link>
     </div>
     <div class="search-bar">
-        <SearchBar></SearchBar>
+      <SearchBar @search="handleSearch"></SearchBar>
     </div>
     <div class="menu-item">
       <img src="@/assets/images/category.png" alt="Category icon" />
-      <span class="nav-text">Categorias</span>
+      <router-link to="/ListProducts"><span class="nav-text">Productos</span></router-link>
     </div>
     <div class="menu-item">
       <img src="@/assets/images/user.png" alt="User Icon" />
-      <span class="nav-text" @click="toggleMenu">Perfil</span>
+      <span class="nav-text" @click="toggleMenu">Admin</span>
       <DropdownMenu
         v-if="showMenu"
         :options="menuOptions"
@@ -33,7 +33,7 @@ export default {
     data() {
     return {
       showMenu: false,
-      menuOptions: ['Login', 'Signup'],
+      menuOptions: ['Agregar Producto', 'Eliminar Producto', 'Lista de Deseos'],
     };
   },
   methods: {
@@ -43,14 +43,22 @@ export default {
     handleOptionClick(option) {
       console.log(`Opción seleccionada: ${option}`);
       // Puedes realizar acciones adicionales cuando se hace clic en una opción
-      if (option === 'Login') {
+      if (option === 'Agregar Producto') {
         // Navegar a la vista Login
-        this.$router.push({ name: 'login' });
+        this.$router.push({ name: 'addProduct' });
       }
-      if (option === 'Signup') {
+      if (option === 'Eliminar Producto') {
         // Navegar a la vista Login
-        this.$router.push({ name: 'signup' });
+        this.$router.push({ name: 'deleteProduct' });
       }
+      if (option === 'Lista de Deseos') {
+        // Navegar a la vista Login
+        this.$router.push({ name: 'wishList' });
+      }
+    },
+    handleSearch(searchQuery) {
+      // Navegar a la vista de lista de productos con el término de búsqueda como parámetro
+      this.$router.push({ name: 'listProducts', query: { search: searchQuery } });
     },
   },
 };
